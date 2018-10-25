@@ -10,5 +10,5 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD gunicorn -b 127.0.0.1:8000 --access-logfile - "Converter_api.app:create_converter()"
+CMD gunicorn -b 0.0.0.0:5000 --access-logfile - "Converter_api.app:create_converter()"
  

@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  converter:
+    build: .
+    command: >
+      gunicorn -b 0.0.0.0:8000
+        --access-logfile -
+        --reload
+        "Converter_api.app:create_converter()"
+    environment:
+      PYTHONUNBUFFERED: 'true'
+    volumes:
+      - '.:/Converter_api'
+    ports:
+      - '5000:8000'
