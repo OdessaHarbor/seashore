@@ -5,9 +5,8 @@ Simple API for converting currencies in particular amounts based on latest rates
 - Gets rates through [Foreign exchange rates API](https://exchangeratesapi.io/)
 - The reference rates are usually updated around 16:00 CET on every working day, except on TARGET closing days.  
 - Support symbols as currency values
-- *<amount>* and *<input_currency>* values are required 
-- Available currencies are limited
 - Recieved rates are cached for 20 minutes
+- Available currencies are limited
 
 ## Usage
 Convert 100 USD into CZK.
