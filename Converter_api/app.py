@@ -4,11 +4,9 @@ from flask_caching import Cache
 import json
 import requests
 
-
 def create_converter():
-    app = Flask(__name__)
-    app.config.from_pyfile("D:\\Sources\\Converter\\config\\settings.py")
-    app
+    app = Flask(__name__, instance_relative_config=True)
+    app.config.from_pyfile("settings.py", silent=True)
 
     parser = reqparse.RequestParser()
     parser.add_argument("amount", type=float, required=True, location="args")
@@ -23,6 +21,7 @@ def create_converter():
             """
             :param amount: amount to convert
             :type amount: float""" 
+            
             self._get_data()
             #get rates from API
             data = {"base":self.inp_cur}
@@ -44,8 +43,9 @@ def create_converter():
             return jsonify(json_tamplate)
 
         @staticmethod
-        @cache.memoize(timeout=300)
+        @cache.memoize(timeout=60*20)
         def _get_rates(data):
+            """Returns latest rates from API."""
             try:
                 resp = requests.get(app.config["RATES_API"], params=data)
                 print("sending request")
@@ -59,11 +59,13 @@ def create_converter():
         
         
         def _get_data(self):
-            """Convert symbols into currency codes """ 
+            """Convert symbols into currency codes.""" 
             args = parser.parse_args()
             self.amount = args["amount"]
             self.inp_cur = args["input_currency"]
             self.out_cur = args["output_currency"]
+            if not self.inp_cur:
+                abort(jsonify({"error": "Input value can't be omitted"}))
 
             fl = open(app.config["SYMBOLS_URL"], encoding="utf_8")
             data = json.load(fl)
