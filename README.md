@@ -20,3 +20,8 @@ GET /currency_converter?amount=100&input_currency=CA$
 ```
 
 ## Deployment
+
+Deploy with docker.
+```sh
+docker-compose up --build
+```
