@@ -6,10 +6,10 @@ services:
     command: >
       gunicorn -b 0.0.0.0:5000
         --access-logfile -
-        "Converter_api.app:create_converter()"
+        "Converter.app:create_converter()"
     environment:
       PYTHONUNBUFFERED: 'true'
     volumes:
-      - '.:/Converter_api'
+      - '.:/Converter'
     ports:
       - '5000:5000'
