@@ -19,10 +19,7 @@ def create_converter():
     class Converter(Resource):
         """Recives params from Query string and returns json output with converted data """
         def get(self):
-            """
-            :param amount: amount to convert
-            :type amount: float""" 
-            
+            """Returns converted currency """
             self._get_data()
             #get rates from API
             data = {"base":self.inp_cur}
