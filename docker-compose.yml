@@ -6,7 +6,6 @@ services:
     command: >
       gunicorn -b 0.0.0.0:5000
         --access-logfile -
-        --reload
         "Converter_api.app:create_converter()"
     environment:
       PYTHONUNBUFFERED: 'true'
