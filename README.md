@@ -23,5 +23,6 @@ GET /currency_converter?amount=100&input_currency=CA$
 
 Deploy with docker.
 ```sh
+cd seashore
 docker-compose up --build
 ```
