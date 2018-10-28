@@ -4,14 +4,15 @@ import json
 import argparse
 import sys
 
+
 RATES_API = "https://api.exchangeratesapi.io/latest"
+PATH = "Symbols.json"
 SUPPORTED_CURRENCIES = ["USD", "JPY", "BGN", "CZK", "DKK", "GBP", "HUF", "PLN", "RON", "SEK", "CHF", "ISK", "NOK", "HRK", "RUB", 
 "TRY", "AUD", "BRL", "CAD", "CNY", "HKD", "IDR", "ILS", "INR", "KRW", "MXN", "MYR", "NZD", "PHP", "SGD", "THB", "ZAR"]
-SYMBOLS_PATH = "..\\instance\\Symbols.json"
 
 
-class Converter():
-    """ Converts base currency into target currency. """
+class Converter_CLI():
+    """ Converts base currency into target currency."""
 
     def __init__(self, input):
         """
@@ -24,7 +25,7 @@ class Converter():
         self.rates = {}
 
     def get_rates(self):
-        """Returns dict with codes and currency rates from API"""
+        """Returns dict with codes and currency rates from API."""
         data = {"base":self.input_currency}
         try:
             resp = requests.get(RATES_API, params=data)
@@ -37,7 +38,7 @@ class Converter():
 
 
     def start(self):
-        """Returns json result of converting."""
+        """Printing json result of converting."""
         self.get_rates()
         converter = Worker(self.rates, self.amount, self.input_currency, self.output_currency)
         print(json.dumps(converter.convert(), indent=4))
@@ -46,7 +47,7 @@ class Converter():
 def get_input():
     """Returns NameSpace obj with input values from comand-line."""
     try:
-        fl = open(SYMBOLS_PATH, encoding="utf_8")
+        fl = open(PATH, encoding="utf_8")
         data = json.load(fl)
     except Exception as f:
         sys.exit(f)
@@ -72,5 +73,5 @@ def get_input():
     return input
 
 
-converter = Converter(get_input())
+converter = Converter_CLI(get_input())
 converter.start()

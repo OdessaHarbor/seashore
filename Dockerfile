@@ -1,6 +1,6 @@
 FROM python:3.7.0-alpine
 
-ENV INSTALL_PATH /Converter
+ENV INSTALL_PATH /Converter_app
 RUN mkdir -p $INSTALL_PATH
 
 WORKDIR $INSTALL_PATH

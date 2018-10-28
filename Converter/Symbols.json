@@ -234,7 +234,7 @@
         "name_plural": "Romanian lei"
     },
     "RUB": {
-        "symbol": "RUB",
+        "symbol": "₽",
         "name": "Russian Ruble",
         "symbol_native": "\u0440\u0443\u0431.",
         "decimal_digits": 2,
