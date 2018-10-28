@@ -18,8 +18,8 @@ Convert 100 CAD into all known currencies
 ```http
 GET /currency_converter?amount=100&input_currency=CA$
 ```
-Convert 0.9 yen into yuan .
-```
+Convert 0.9 Yen into Yuan.
+```http
 GET /currency_converter?amount=0.9&input_currency=¥&output_currency=CN¥
 ```
 
