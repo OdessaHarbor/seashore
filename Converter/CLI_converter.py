@@ -72,6 +72,6 @@ def get_input():
         else: continue
     return input
 
-
-converter = Converter_CLI(get_input())
-converter.start()
+if __name__ == "__main__":
+    converter = Converter_CLI(get_input())
+    converter.start()
