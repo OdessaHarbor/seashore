@@ -30,3 +30,7 @@ Deploy with docker.
 cd seashore
 docker-compose up --build
 ```
+Deploy with built-in server.
+```sh
+flask run 
+```
