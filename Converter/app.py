@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_restful import Api
 from Converter.apis import my_api
-import os
 import logging
 
 
